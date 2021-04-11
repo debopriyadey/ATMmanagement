@@ -4,16 +4,17 @@
 main()
 {
 	FILE *fp, *ft;
-	char another, choice,ename[100];
+	char another, choice, accnum, accpin;
 	
-	struct emp
+	struct acc
 	{
 		char name[100];
-		int age;
-		float sal;
+		int num;
+		int pin;
+		int balance;
 	};
-	struct emp e;
-	int reclen=sizeof(e);
+	struct acc a;
+	int reclen=sizeof(a);
 	
 	fp=fopen("EMP.DAT","r+");
 	if(fp==NULL)
