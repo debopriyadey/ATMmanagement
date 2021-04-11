@@ -16,10 +16,10 @@ main()
 	struct acc a;
 	int reclen=sizeof(a);
 	
-	fp=fopen("EMP.DAT","r+");
+	fp=fopen("BankAcc.DAT","r+");
 	if(fp==NULL)
 	{
-		fp=fopen("EMP.DAT","w+");
+		fp=fopen("BankAcc.DAT","w+");
 		if(fp==NULL)
 		{
 			printf("\nFile cannot be cretaed/opened...");
