@@ -16,7 +16,8 @@ struct profile
 	int password;
 };
 
-struct account a,b;
+struct account a;
+struct account m;
 struct profile admin;
 int addon, deduct, remain;
 int deposit(struct account);
@@ -24,8 +25,11 @@ int withdraw(struct account);
 void details(struct account,int);
 void customer();
 void manager();
+void list();
 void add();
-//void modify();
+void modify();
+int reclen=sizeof(a);
+int bal;
 
 int main()
 {
@@ -72,48 +76,80 @@ void manager()
 		fscanf(fm,"%d %d",&admin.id, &admin.password);
 		if(id==admin.id)
 		{
-			printf("\n...Access Granted...\n");
-			flag=1;
-			break;
+			printf("Enter the password= ");
+			scanf("%d",&pass);
+			if(pass==admin.password)
+			{
+				printf("\n...Access Granted...\n");
+				flag=1;
+				break;
+			}
 		}
 		else
 		{
 			continue;
 		}
 	}
-	
+
 	if(flag==1)
 	{
-		printf("\nEnter the password= ");
-		scanf("%d",&pass);
-		
-		if(pass==admin.password)
+		printf("Enter \n1.List all accounts \n2.Add account \n3.Modify existing account \n4.Exit");
+		while(1)
 		{
-			printf("Enter \n1. Add account \n2. Modify existing account \n3. Exit");
-			while(1)
+			printf("\nEnter choice= ");
+			scanf("%d",&ch);
+			switch(ch)
 			{
-				printf("\nEnter choice= ");
-				scanf("%d",&ch);
-				switch(ch)
-				{
-					case 1:
-						add();
-						break;
-						
-					case 2:
-						modify();
-						break;
-						
-					case 3:
-						exit(1);
-						
-						
-					default:
-						printf("\nEnter correct choice!!!");
-				}
+				case 1:
+					list();
+					break;
+					
+				case 2:
+					add();
+					break;
+					
+				case 3:
+					modify();
+					break;
+				
+				case 4: 
+					exit(1);
+					
+				default:
+					printf("\nEnter the correct choice!!!");
 			}
 		}
 	}
+	else 
+	{
+		printf(".....Acesses denied......");
+
+	}
+}
+
+void list()
+{
+	FILE *fp;
+	fp = fopen("BankAcc.dat", "rb+");
+	if(fp==NULL)
+	{
+		fp = fopen("BankAcc.dat", "wb+");
+		if(fp==NULL)
+		{
+			printf("\nFile cannot be created/opened...");
+			exit(0);
+		}
+	}
+	rewind(fp);
+	while(fread(&a,reclen,1,fp)==1)
+	{
+		printf("\n%s %d %d %d\n", a.name,a.num,a.pin,a.balance);
+	}
+	/*while(!feof(fp))
+	{
+		fscanf(fp, "%s %d %d %d", a.name,&a.num,&a.pin,&a.balance);
+		printf("%s %d %d %d\n", a.name,a.num,a.pin,a.balance);
+	}*/
 }
 
 void add()
@@ -134,15 +170,69 @@ void add()
 	another='Y';
 	while(another=='Y')
 	{
-	printf("\nEnter Name \tAccount number \tPin \tBalance \t");
-	scanf("%s %d %d %d",&a.name,&a.num,&a.pin,&a.balance);
-	fprintf(fp,"\n%s %d %d %d",a.name,a.num,a.pin,a.balance);
-	printf("\nWant to add more accounts? ");
-	fflush(stdin);
-	another=getchar();
+		printf("\nEnter Name \tAccount number \tPin \tBalance \n");
+		scanf("%s %d %d %d",a.name,&a.num,&a.pin,&a.balance);fprintf(fp, "\n");
+		fwrite(&a,reclen,1,fp);
+		//fprintf(fp,"%s %d %d %d\n",a.name,a.num,a.pin,a.balance);
+		printf("\nWant to add more accounts? ");
+		fflush(stdin);
+		another=getchar();
     }
     fclose(fp);
 }
+
+void modify(){
+    char mname[100];
+    int reclen;
+	printf("\nEnter name of the holder whose record needs to be changed....");
+	scanf("%s", mname);
+    FILE *fp;
+	fp = fopen("BankAcc.dat", "rb+");
+	if(fp==NULL)
+	{
+		fp = fopen("BankAcc.dat", "wb+");
+		if(fp==NULL)
+		{
+			printf("\nFile cannot be created/opened...");
+			exit(0);
+		}
+	}
+    
+    /*reclen = sizeof(a);
+    printf("%d", reclen);
+	while (!feof(fp))
+	{
+	    fscanf(fp, "%s %d %d %d", a.name,&a.num,&a.pin,&a.balance);
+	    if (strcmp(a.name, mname) == 0)
+	    {
+	        printf("\nEnter Name \tAccount number \tPin \tBalance \n");
+	        scanf("%s %d %d %d", m.name,&m.num,&m.pin,&m.balance);
+	        fseek(fp, -reclen, SEEK_CUR);
+			fwrite(&m, reclen, 1, fp);
+	        //fprintf(fp, "%s %d %d %d\n", m.name,m.num,m.pin,m.balance);
+	        printf("\nFile write complete...");
+	        break;
+	        //fseek(fp,0,SEEK_END);
+	        //fseek(fp,0,SEEK_SET);
+	        //fscanf(fp,"%s %d %f",e.name,&e.age,&e.sal);
+	    }
+	}*/
+	
+	while (fread(&a, reclen, 1, fp) == 1)
+	{
+	    if (strcmp(a.name, mname) == 0)
+	    {
+	        printf("\nEnter Name \tAccount number \tPin \tBalance \n");
+	        scanf("%s %d %d %d", m.name,&m.num,&m.pin,&m.balance);
+	        fseek(fp, -reclen, SEEK_CUR); 
+	        fwrite(&m, reclen, 1, fp);
+	        printf("\nFile write complete...");
+	        break;
+	    }
+	}
+	fclose(fp);
+}
+
 
 void customer()
 {
@@ -151,6 +241,8 @@ void customer()
 	int ch,z,k,pointer=0;
 	int flag = 0,counter=0;
 	int balance;
+	char temp_name[50];
+
 	
 	fp = fopen("BankAcc.dat", "rb+");
 	if(fp==NULL)
@@ -166,32 +258,33 @@ void customer()
 	}
 	
 	// check the A/c num then copy the data to struct a
-	printf("Enter the number= ");
+	printf("Enter the Account number= ");
 	scanf("%d",&n);
 	rewind(fp);
 	while(!feof(fp)) //The counter is running one extra time
 	{
 		fscanf(fp,"%s %d %d %d",a.name, &a.num, &a.pin, &a.balance);
-		if(a.num == n){
+		if(a.num == n)
+		{
 			printf("\nA/c No. Matched");
-		//	printf("\n%s, %d, %d",a.name, a.num, a.balance);
-			flag = 1;
-			break;
+			printf("\nEnter pin= ");
+			scanf("%d",&k);
+			if(a.pin==k)
+			{
+				flag = 1;
+				break;
+			}
 		}
 		else {
-		//	printf("\nEnter valid account number!!!");
 			continue;
 		}
 	}
 	
 	if(flag == 1)
 	{
-		printf("\nEnter pin= ");
-		scanf("%d",&k);
-		
-		if(a.pin==k)
-		{
-		printf("\n\n1.Check info\n2.Deposit\n3.Withdraw");
+		strcpy(temp_name,a.name);                            
+		// temp_name is used to store the name temporarily for future use.
+		printf("\n\n1.Check info\n2.Deposit\n3.Withdraw\n4.Exit\n");
 		balance = a.balance;	
 		while(1)
 		{
@@ -213,14 +306,35 @@ void customer()
 					break;
 					
 				case 3:
-					z = withdraw(a);
-					pointer=3;
-					if(z!=0)
-					a.balance = z;
-					details(a,pointer);
+					if(a.balance<=100)
+					{
+						z = withdraw(a);
+						pointer=3;
+						a.balance = z;
+						details(a,pointer);	
+					}
+					else 
+					{
+						printf("\nInsufficient balance...");
+					}
 					break;
 				
 				case 4:
+				rewind(fp);  //rewind makes the pointer point towards starting
+				struct account b;
+				while(fread(&a,reclen,1,fp)==1)
+				{
+					if(strcmp(a.name,temp_name)==0)
+					{
+						strcpy(a.name,b.name);
+						b.num=a.num;
+						b.balance=bal;
+						b.pin=a.pin;
+						fseek(fp,-reclen,SEEK_CUR); //fseek(fp,0,SEEK_END);
+						fwrite(&b,reclen,1,fp);
+						break;
+					}
+				}              
 					fclose(fp);
 					exit(1);
 						
@@ -228,7 +342,10 @@ void customer()
 					printf("\nEnter correct choice!!!");
 			}
 		}
-		}
+	}
+	else 
+	{
+		printf("......User Credential not matched........");
 	}
 }
 
@@ -243,7 +360,7 @@ void customer()
 
 int deposit(struct account a)
 {
-	int bal= a.balance;
+	bal= a.balance;
 	printf("\nYour current balance = %d", bal);
 	printf("\nEnter the amount you want to deposit= ");
 	scanf("%d", &addon);
@@ -254,7 +371,7 @@ int deposit(struct account a)
 
 int withdraw(struct account a)
 {
-	int bal = a.balance;
+	bal = a.balance;
 	printf("\nYour current balance = %d", bal);
 	printf("\nEnter the amount you want to take out= ");
 	scanf("%d",&deduct);
