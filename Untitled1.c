@@ -141,15 +141,11 @@ void list()
 		}
 	}
 	rewind(fp);
-	while(fread(&a,reclen,1,fp)==1)
-	{
-		printf("\n%s %d %d %d\n", a.name,a.num,a.pin,a.balance);
-	}
-	/*while(!feof(fp))
+	while(!feof(fp))
 	{
 		fscanf(fp, "%s %d %d %d", a.name,&a.num,&a.pin,&a.balance);
 		printf("%s %d %d %d\n", a.name,a.num,a.pin,a.balance);
-	}*/
+	}
 }
 
 void add()
@@ -171,9 +167,8 @@ void add()
 	while(another=='Y')
 	{
 		printf("\nEnter Name \tAccount number \tPin \tBalance \n");
-		scanf("%s %d %d %d",a.name,&a.num,&a.pin,&a.balance);fprintf(fp, "\n");
-		fwrite(&a,reclen,1,fp);
-		//fprintf(fp,"%s %d %d %d\n",a.name,a.num,a.pin,a.balance);
+		scanf("%s %d %d %d",a.name,&a.num,&a.pin,&a.balance);
+		fprintf(fp,"\n%s %d %d %d",a.name,a.num,a.pin,a.balance);
 		printf("\nWant to add more accounts? ");
 		fflush(stdin);
 		another=getchar();
@@ -186,6 +181,7 @@ void modify(){
     int reclen;
 	printf("\nEnter name of the holder whose record needs to be changed....");
 	scanf("%s", mname);
+	fflush(stdin);
     FILE *fp;
 	fp = fopen("BankAcc.dat", "rb+");
 	if(fp==NULL)
@@ -198,8 +194,6 @@ void modify(){
 		}
 	}
     
-    /*reclen = sizeof(a);
-    printf("%d", reclen);
 	while (!feof(fp))
 	{
 	    fscanf(fp, "%s %d %d %d", a.name,&a.num,&a.pin,&a.balance);
@@ -207,18 +201,18 @@ void modify(){
 	    {
 	        printf("\nEnter Name \tAccount number \tPin \tBalance \n");
 	        scanf("%s %d %d %d", m.name,&m.num,&m.pin,&m.balance);
-	        fseek(fp, -reclen, SEEK_CUR);
-			fwrite(&m, reclen, 1, fp);
-	        //fprintf(fp, "%s %d %d %d\n", m.name,m.num,m.pin,m.balance);
+	        fseek(fp, reclen, SEEK_CUR);
+			//fwrite(&m, reclen, 1, fp);
+	        fprintf(fp, "\n%s %d %d %d", m.name,m.num,m.pin,m.balance);
 	        printf("\nFile write complete...");
 	        break;
 	        //fseek(fp,0,SEEK_END);
 	        //fseek(fp,0,SEEK_SET);
 	        //fscanf(fp,"%s %d %f",e.name,&e.age,&e.sal);
 	    }
-	}*/
+	}
 	
-	while (fread(&a, reclen, 1, fp) == 1)
+	/*while (fread(&a, reclen, 1, fp) == 1)
 	{
 	    if (strcmp(a.name, mname) == 0)
 	    {
@@ -229,7 +223,7 @@ void modify(){
 	        printf("\nFile write complete...");
 	        break;
 	    }
-	}
+	}*/
 	fclose(fp);
 }
 
