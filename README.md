@@ -1,14 +1,14 @@
 # ATMmanagement
 
-##About
+## About
 
-##Motivation
+## Motivation
 
-##Tech used
+## Tech used
 
-##Challenges
+## Challenges
 
-##Things Learnt
+## Things Learnt
 
-##Photos
+## Photos
 
