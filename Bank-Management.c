@@ -25,8 +25,10 @@ void details(struct account,int);
 void customer();
 void manager();
 void list();
+void search();
 void add();
 void modify();
+void deleteAcc();
 int reclen=sizeof(a);
 int bal;
 
@@ -92,7 +94,7 @@ void manager()
 
 	if(flag==1)
 	{
-		printf("Enter \n1.List all accounts \n2.Add account \n3.Modify existing account \n4.Exit");
+		printf("Enter \n1.List all accounts \n2.Search a record \n3.Add account \n4.Modify existing account \n5.Delete \n6.Exit");
 		while(1)
 		{
 			printf("\nEnter choice= ");
@@ -104,14 +106,22 @@ void manager()
 					break;
 					
 				case 2:
-					add();
+					search();
 					break;
 					
 				case 3:
+					add();
+					break;
+					
+				case 4:
 					modify();
 					break;
+					
+				case 5:
+					deleteAcc();
+					break;
 				
-				case 4: 
+				case 6: 
 					exit(1);
 					
 				default:
@@ -146,6 +156,49 @@ void list()
 	}
 }
 
+void search()
+{
+	char sch[20];
+	int num;
+	FILE *fp;
+    fp = fopen("BankAcc.dat", "rb+");
+	if(fp==NULL)
+	{
+		fp = fopen("BankAcc.dat", "wb+");
+		if(fp==NULL)
+		{
+			printf("\nFile cannot be created/opened...");
+			exit(0);
+		}
+	}
+	printf("\nenter the name or A/c no. ");
+	fflush(stdin);
+	gets  (sch);
+	num = atoi(sch);
+	
+	if (num != 0)
+	{
+		while(fread(&a,reclen,1,fp)==1)
+		{
+			if(a.num == num)
+			{
+				printf("\n%s %d %d %d",a.name,a.num,a.pin,a.balance);
+			}
+		}	
+	} 
+	else
+	{
+		while(fread(&a,reclen,1,fp)==1)
+		{
+			if(strcmp(a.name,sch)==0)
+			{
+				printf("\n%s %d %d %d",a.name,a.num,a.pin,a.balance);
+			}
+		}
+	}
+	fclose(fp);
+}
+
 void add()
 {
 	FILE *fp;
@@ -163,14 +216,14 @@ void add()
 	fseek(fp,0,SEEK_END);
 	another='Y';
 	while(another=='Y')
-				{
-					printf("\nEnter Holder name , Account number , Account pin , Account opening balance: ");
-					scanf("\n%s %d %d %d",a.name,&a.num,&a.pin,&a.balance);
-					fwrite(&a,reclen,1,fp);
-					printf("\nWant to add more records? ");
-					fflush(stdin);
-					another=getchar();
-				}
+	{
+		printf("\nEnter Holder name , Account number , Account pin , Account opening balance: ");
+		scanf("\n%s %d %d %d",a.name,&a.num,&a.pin,&a.balance);
+		fwrite(&a,reclen,1,fp);
+		printf("\nWant to add more records? ");
+		fflush(stdin);
+		another=getchar();
+	}
     fclose(fp);
 }
 
@@ -195,15 +248,49 @@ void modify(){
 	{
 		if(strcmp(a.name,mname)==0)
 		{
-		printf("\nEnter Holder name , Account number , Account pin , Account opening balance: ");
-		scanf("\n%s %d %d %d",m.name,&m.num,&m.pin,&m.balance);
-		fseek(fp,-reclen,SEEK_CUR); //fseek(fp,0,SEEK_END);
-		fwrite(&m,reclen,1,fp);
-		break;						
-// fseek is use to point the particular part where we want to add the data...		
+			printf("\nEnter Holder name , Account number , Account pin , Account opening balance: ");
+			scanf("\n%s %d %d %d",m.name,&m.num,&m.pin,&m.balance);
+			fseek(fp,-reclen,SEEK_CUR); //fseek(fp,0,SEEK_END);
+			fwrite(&m,reclen,1,fp);
+			break;						
 		}
 	}
 	fclose(fp);
+}
+
+void deleteAcc()
+{
+	char mname[100];
+    FILE *fp;
+    fp = fopen("BankAcc.dat", "rb+");
+	if(fp==NULL)
+	{
+		fp = fopen("BankAcc.dat", "wb+");
+		if(fp==NULL)
+		{
+			printf("\nFile cannot be created/opened...");
+			exit(0);
+		}
+	}
+	printf("\nEnter name of the holder whose record needs to be changed....");
+	scanf("%s", mname);
+	rewind(fp);  //rewind makes the pointer point towards starting
+	struct account m;   // For modification	
+	m.balance = "";
+	m.name = "";
+	m.num = "";
+	m.pin = "";		
+	while(fread(&a,reclen,1,fp)==1)
+	{
+		if(strcmp(a.name,mname)==0)
+		{
+			fseek(fp,-reclen,SEEK_CUR); //fseek(fp,0,SEEK_END);
+			fwrite(&m,reclen,1,fp);
+			break;						
+		}
+	}
+	fclose(fp);
+	
 }
 
 
