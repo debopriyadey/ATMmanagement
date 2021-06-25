@@ -1,4 +1,4 @@
-# ATMmanagement
+# Bank Management
 
 ## About
 
