@@ -28,5 +28,5 @@ This project uses file handling features of C. Here, the system creates an exter
 
 ## Demo
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
-" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+" target="_blank"><img src="https://images.unsplash.com/photo-1621569898825-ef12e7592f94?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
