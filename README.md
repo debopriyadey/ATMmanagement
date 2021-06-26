@@ -2,9 +2,11 @@
 
 ## About
 
-Talking about the features of this system, a user can log into the system either as a bank maneger or as a customer. Logging in the system will require user creadential for authentication.
+Bank Management System is based on the concept of recording customer’s account details and performing customer's utility functions. The system contains both the admin section and customers section. All the main features of the banking system are set in this project.
 
-**Operations that can be performed by a manger**
+Talking about the features of this system, a user can log into the system either as a bank manager or as a customer. Logging in the system will require user credential for authentication.
+
+**Operations that can be performed by a manager**
 - Print the list of Accounts
 - Search a perticular Account by name or by A/c number 
 - Add new Accounts
