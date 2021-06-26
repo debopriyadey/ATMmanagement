@@ -26,7 +26,17 @@ This project uses file handling features of C. Here, the system creates an exter
 
 ## Challenges
 
+This was a really challanging project as it was our first Project with **C programing language**.
+
+
 ## Things Learnt
+
+In order to overcome the challenges we went through many articles on **Geeksforgeeks**, **Medium**, **Stack Overflow** and many more. We also watched many tutorial videos on **YouTube**. 
+In this process of exploration we learnt many things related to **C programing language** and **Data Structure and Algorithms**. 
+Few of them are:
+- File Handling
+- Structure in C
+
 
 ## Demo
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
