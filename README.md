@@ -15,7 +15,7 @@ Talking about the features of this system, a user can log into the system either
 
 **Operations that can be performed by a customer**
 - Check the Balance and other Deatails of the Account
-- Widhdraw Money from his Account
+- Withdraw Money from his Account
 - Deposit Money to his Account
 
 
