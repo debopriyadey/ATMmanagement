@@ -31,7 +31,7 @@ This was a really challanging project as it was our first Project with **C progr
 
 ## Things Learnt
 
-In order to overcome the challenges we went through many articles on **Geeksforgeeks**, **Medium**, **Stack Overflow** and many more. We also watched many tutorial videos on **YouTube**. 
+In order to overcome the challenges we went through many articles on **Geeksforgeeks**, **Medium**, **Stack Overflow**(https://stackoverflow.com/) and many more. We also watched many tutorial videos on **YouTube**. 
 
 In this process of exploration we learnt many things related to **C programing language** and **Data Structure and Algorithms**. 
 
