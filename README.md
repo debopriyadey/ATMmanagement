@@ -19,7 +19,7 @@ Talking about the features of this system, a user can log into the system either
 
 ## Tech used
 
-This simple system is developed using C Programming Language and different Data Structures and Algorithms have been used for the development of it.
+This simple system is developed using `C Programming Language` and different Data Structures and Algorithms have been used for the development of it.
 This project uses file handling features of C. Here, the system creates an external file (DAT file) to store all the user’s data, so every time we get into the system we can operate with the existing accounts.
 
 ## Challenges
