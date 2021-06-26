@@ -2,7 +2,7 @@
 
 ## About
 
-Talking about the features of this system, a user can log into the system either as a bank maneger or as a customer. Logging in the system with require user creadential for authentication.
+Talking about the features of this system, a user can log into the system either as a bank maneger or as a customer. Logging in the system will require user creadential for authentication.
 
 **Operations that can be performed by a manger**
 - Print the list of Accounts
@@ -19,7 +19,8 @@ Talking about the features of this system, a user can log into the system either
 
 ## Tech used
 
-This simple system is developed using C++ Programming Language and different variables, strings have been used for the development of it.
+This simple system is developed using C Programming Language and different Data Structures and Algorithms have been used for the development of it.
+This project uses file handling features of C. Here, the system creates an external file (DAT file) to store all the user’s data, so every time we get into the system we can operate with the existing accounts.
 
 ## Challenges
 
