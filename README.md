@@ -36,10 +36,13 @@ In order to overcome the challenges we went through many articles on [**Geeksfor
 In this process of exploration we learnt many things related to **C programing language** and **Data Structure and Algorithms**. 
 
 Few of them are:
-- File Handling
+- Function
+- Arrays and Pointers
 - Structure in C
-
-
+- File Handling
+- Read and Write in Binary Mode
+ 
+ 
 ## Demo
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
 " target="_blank"><img src="https://images.unsplash.com/photo-1601458456818-078258abf9a9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZ3JhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
