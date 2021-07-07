@@ -43,7 +43,6 @@ Few of them are:
 - Read and Write in Binary Mode
  
  
-## Demo
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
-" target="_blank"><img src="https://images.unsplash.com/photo-1601458456818-078258abf9a9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZ3JhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+## Demo Video
+<a href="https://www.youtube.com/watch?v=EDkSDpmn5nA" target="_blank"><img src="https://images.unsplash.com/photo-1601458456818-078258abf9a9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZ3JhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
 alt="IMAGE ALT TEXT HERE" width="540" height="280" border="40" /></a>
