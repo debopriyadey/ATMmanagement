@@ -11,7 +11,6 @@ Talking about the features of this system, a user can log into the system either
 - Search a perticular Account by name or by A/c number 
 - Add new Accounts
 - Modify details of Accounts
-- Delete a particular Account
 
 **Operations that can be performed by a customer**
 - Check the Balance and other Deatails of the Account
@@ -44,5 +43,5 @@ Few of them are:
  
  
 ## Demo Video
-<a href="https://www.youtube.com/watch?v=EDkSDpmn5nA" target="_blank"><img src="https://images.unsplash.com/photo-1601458456818-078258abf9a9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZ3JhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+<a href="https://www.youtube.com/watch?v=EDkSDpmn5nA" target="_blank"><img src="https://www.bbminfo.com/assets/images/screenshot/c/c-hello-world-compile-and-run.jpg" 
 alt="IMAGE ALT TEXT HERE" width="540" height="280" border="40" /></a>
